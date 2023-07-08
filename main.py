@@ -15,13 +15,18 @@ default_settings = {
     "freq_x": 2,
     "freq_y": 3,
     "color": "midnightblue",
-    "width": 2
+    "width": 1
 }
 
 
 # Цвета для matplotlib
-with open("mpl.json", mode="r") as f:
-    mpl_color_dict = json.load(f)
+
+mpl_color_dict = {
+    "Красный": "crimson",
+    "Зелёный": "g",
+    "Жёлтый": "gold",
+    "Синий": "midnightblue"
+}
 
 
 class LissajousWindow(qt.QMainWindow):
@@ -115,7 +120,8 @@ class LissajousWindow(qt.QMainWindow):
         if file_path == "":
             return
 
-        raise NotImplementedError("Тут всего одной строчки не хватает.")
+        #raise NotImplementedError("Тут всего одной строчки не хватает.")
+        self._fig.savefig(file_path)
 
 
 if __name__ == "__main__":
@@ -124,7 +130,6 @@ if __name__ == "__main__":
 
     # Создаём и настраиваем главное окно
     main_window = LissajousWindow()
-
     # Показываем окно
     main_window.show()
 
